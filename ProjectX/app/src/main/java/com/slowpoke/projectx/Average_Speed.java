@@ -53,7 +53,7 @@ public class Average_Speed extends AppCompatActivity {
         fabBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //result
+                AverageSpeed();
             }
         });
 
@@ -65,19 +65,20 @@ public class Average_Speed extends AppCompatActivity {
                 finish();
             }
         });
+
+        //inputs visibility gone
+        InputsGone();
+
+        //edittexts
+        value_of_inputField_1 = findViewById(R.id.input_field_1);
+        value_of_inputField_2 = findViewById(R.id.input_field_2);
+        value_of_inputField_3 = findViewById(R.id.input_field_3);
     }
 
-
-    //for showing result
-    public float val1,val2,val3;
-    public String word1,word2,word3 = "0";
 
 
     //expand
     LinearLayout expandBtn;
-
-    public ArrayList<EditText> averageSpeed = new ArrayList<EditText>();
-
 
     //variables
     boolean slot1,slot2,slot3 = false;
@@ -120,6 +121,7 @@ public class Average_Speed extends AppCompatActivity {
 
                     isClickled_1 = true;
                     slot1 = true;
+                    input_layout_1.setVisibility(View.VISIBLE);
                 }
 
                 else
@@ -129,6 +131,8 @@ public class Average_Speed extends AppCompatActivity {
                     isClickled_1 = false;
                     slot1 = false;
                     whichSlot = 0;
+                    value_of_inputField_1.setText("");
+                    input_layout_1.setVisibility(View.GONE);
                 }
 
 
@@ -150,6 +154,7 @@ public class Average_Speed extends AppCompatActivity {
                     colorBtn_2.setBackgroundColor(getResources().getColor(R.color.light_color));
                     slot2 = true;
                     isClickled_2 = true;
+                    input_layout_2.setVisibility(View.VISIBLE);
                 }
 
                 else
@@ -159,6 +164,8 @@ public class Average_Speed extends AppCompatActivity {
                     isClickled_2 = false;
                     slot2 = false;
                     whichSlot = 0;
+                    value_of_inputField_2.setText("");
+                    input_layout_2.setVisibility(View.GONE);
                 }
 
             }
@@ -179,6 +186,7 @@ public class Average_Speed extends AppCompatActivity {
                     textClr_3.setTextColor(getResources().getColor(R.color.bold_color));
                     colorBtn_3.setBackgroundColor(getResources().getColor(R.color.light_color));
                     isClickled_3 = true;
+                    input_layout_3.setVisibility(View.VISIBLE);
                 }
 
                 else
@@ -188,6 +196,9 @@ public class Average_Speed extends AppCompatActivity {
                     isClickled_3 = false;
                     whichSlot = 0;
                     slot3 = false;
+                    value_of_inputField_3.setText("");
+                    input_layout_3.setVisibility(View.GONE);
+
                 }
 
             }
@@ -198,6 +209,14 @@ public class Average_Speed extends AppCompatActivity {
 
     //this number specifies which slot is empty
     int whichSlot;
+
+    EditText value_of_inputField_1, value_of_inputField_2 , value_of_inputField_3;
+    //for showing result
+    public String word1,word2 ,word3;
+
+    //value which have been converted to string now to float
+    public float val1,val2,val3;
+
 
     public void CheckEmpty()
     {
@@ -213,12 +232,31 @@ public class Average_Speed extends AppCompatActivity {
         {
             whichSlot = 2;
         }
+
+        word1 = value_of_inputField_1.getText().toString();
+        word2 = value_of_inputField_2.getText().toString();
+        word3 = value_of_inputField_3.getText().toString();
+
+        val1 = Float.parseFloat( 0 + word1);
+        val2 = Float.parseFloat( 0 + word2);
+        val3 = Float.parseFloat( 0 + word3);
+
     }
 
+
+
+    TextView resultShow, indicate;
+    ConstraintLayout resultLayout;
     public void AverageSpeed(){
 
         CheckEmpty();
         float speed,distance,time;
+
+        resultShow = findViewById(R.id.result_show_text);
+        indicate = findViewById(R.id.indication);
+        resultLayout = findViewById(R.id.result_layout);
+
+        resultLayout.setVisibility(View.VISIBLE);
 
         speed = val1;
         distance = val2;
@@ -227,18 +265,22 @@ public class Average_Speed extends AppCompatActivity {
         if(whichSlot == 1)
         {
             speed = distance/time;
-            Toast.makeText(getApplicationContext(), "Speed: " + speed + "/h", Toast.LENGTH_SHORT).show();
+            resultShow.setText(String.valueOf(speed) + "/Hr");
+            indicate.setText("Speed ~~");
         }
         else if(whichSlot == 2)
         {
             distance = speed * time;
-            Toast.makeText(getApplicationContext(), "Distance: " + distance + "km", Toast.LENGTH_SHORT).show();
+            resultShow.setText(String.valueOf(distance) + "km");
+            indicate.setText("Distance ~~");
         }
         else if(whichSlot == 3)
         {
             time = distance / speed;
-            Toast.makeText(getApplicationContext(), "Time: " + time + "h", Toast.LENGTH_SHORT).show();
+            resultShow.setText(String.valueOf(time) +"Hr");
+            indicate.setText("Time ~~");
         }
+
 
     }
 
@@ -266,5 +308,13 @@ public class Average_Speed extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    CardView input_layout_1 ,input_layout_2 ,input_layout_3;
+    public void InputsGone()
+    {
+        input_layout_1 = findViewById(R.id.input_1);
+        input_layout_2 = findViewById(R.id.input_2);
+        input_layout_3 = findViewById(R.id.input_3);
     }
 }
