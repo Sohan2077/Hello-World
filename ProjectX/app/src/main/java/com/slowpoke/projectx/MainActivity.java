@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         buttons.get(0).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Algorithm.class));
+                startActivity(new Intent(MainActivity.this,Average_Speed.class));
             }
         });
 

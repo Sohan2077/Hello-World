@@ -13,5 +13,10 @@
     <color name="app_background_color">#FFFFFF</color>
     <color name="default_color">#000000</color>
     <color name="default_stroke_color">#61000000</color>
-    <color name="text_color">#5A5A5A</color>
+    <color name="white_text">#FFFFFF</color>
+    <color name="text_color">#90000000</color>
+    <color name= "bold_color">#2879fe</color>
+    <color name= "light_color">#DEEAFD</color>
+    <color name= "result_button_color">#2879fe</color>
+
 </resources>
