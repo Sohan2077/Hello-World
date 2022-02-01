@@ -23,7 +23,7 @@ import com.slowpoke.projectx.R;
 import java.sql.Array;
 import java.util.ArrayList;
 
-public class Average_Speed extends AppCompatActivity {
+public class Displacement extends AppCompatActivity {
 
 
     FloatingActionButton fabBut;
@@ -34,7 +34,7 @@ public class Average_Speed extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_average__speed);
+        setContentView(R.layout.activity_displacement);
 
         //expand();
         InstantiateAlgorithm();
@@ -55,7 +55,7 @@ public class Average_Speed extends AppCompatActivity {
             public void onClick(View v) {
                 if(whichSlot != 0)
                 {
-                    AverageSpeed();
+                    Displacement();
                 }
 
             }
@@ -253,7 +253,7 @@ public class Average_Speed extends AppCompatActivity {
 
     TextView resultShow, indicate;
     ConstraintLayout resultLayout;
-    public void AverageSpeed(){
+    public void Displacement(){
 
         CheckEmpty();
         float speed,distance,time;
@@ -272,13 +272,13 @@ public class Average_Speed extends AppCompatActivity {
         {
             speed = distance/time;
             resultShow.setText(String.valueOf(speed) + "/Hr");
-            indicate.setText("Speed ~~");
+            indicate.setText("Velocity ~~");
         }
         else if(whichSlot == 2)
         {
             distance = speed * time;
             resultShow.setText(String.valueOf(distance) + "km");
-            indicate.setText("Distance ~~");
+            indicate.setText("Displacement ~~");
         }
         else if(whichSlot == 3)
         {

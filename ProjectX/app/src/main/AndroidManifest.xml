@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Transparent">
-        <activity android:name=".Average_Speed"></activity>
+        <activity android:name=".Displacement"></activity>
+        <activity android:name=".Motion_Layout" />
+        <activity android:name=".Average_Speed" />
         <activity android:name=".Algorithm" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".MainActivity">

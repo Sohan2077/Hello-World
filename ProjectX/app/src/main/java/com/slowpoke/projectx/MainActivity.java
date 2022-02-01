@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.Layout;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     //drawer
     DrawerLayout drawer;
 
+    //preventing mutliple touches
+    private long mLastClickTime = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
         //main to search layout
         ConstraintLayout searchbutton = findViewById(R.id.search_button);
-
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(SystemClock.elapsedRealtime() - mLastClickTime < 200)
+                {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 Intent myIntent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(myIntent);
             }
@@ -75,12 +83,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void categoryToLayout()
-    {
+    public void categoryToLayout() {
         int index;
 
         //search all categories button
-        ArrayList <LinearLayout> buttons = new ArrayList<LinearLayout>();
+        ArrayList<LinearLayout> buttons = new ArrayList<LinearLayout>();
 
         //buttons allocation
         buttons.add(this.<LinearLayout>findViewById(R.id.button_1));
@@ -89,17 +96,26 @@ public class MainActivity extends AppCompatActivity {
         buttons.get(0).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Average_Speed.class));
+                    if(SystemClock.elapsedRealtime() - mLastClickTime < 200)
+                    {
+                        return;
+                    }
+                    mLastClickTime = SystemClock.elapsedRealtime();
+                startActivity(new Intent(MainActivity.this, Motion_Layout.class));
             }
         });
 
-        buttons.get(1).setOnTouchListener(new View.OnTouchListener() {
+        buttons.get(1).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Toast.makeText(getApplicationContext(),"Dope",Toast.LENGTH_SHORT).show();
-                return false;
+            public void onClick(View v) {
+                if(SystemClock.elapsedRealtime() - mLastClickTime < 200)
+                {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
+                Toast.makeText(getApplicationContext(), "bruh", Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
+    }
 }

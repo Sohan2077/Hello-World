@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Average_Speed">
+    tools:context=".Displacement">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +61,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Average Speed"
+            android:text="Displacement"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/bold_color"
@@ -120,7 +120,7 @@
                 android:id="@+id/details_out"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="speed = distance / time"
+                android:text="velocity = displacement / time"
                 android:textSize="20dp"
                 android:visibility="visible"
                 android:textStyle="bold"
@@ -184,7 +184,7 @@
                             android:id="@+id/text_color_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Speed"
+                            android:text="Velocity"
                             android:textColor="@color/white_text"
                             android:textSize="15dp"
                             android:textStyle="bold" />
@@ -234,7 +234,7 @@
                             android:id="@+id/text_color_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Distance"
+                            android:text="Displace."
                             android:textColor="@color/white_text"
                             android:textSize="15dp"
                             android:textStyle="bold" />
@@ -342,7 +342,7 @@
                         android:layout_marginLeft="2dp"
                         android:background="@color/bold_color"
                         android:gravity="center"
-                        android:text="S"
+                        android:text="V"
                         android:textColor="@color/white_text"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -529,5 +529,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

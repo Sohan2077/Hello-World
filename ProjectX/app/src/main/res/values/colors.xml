@@ -19,4 +19,6 @@
     <color name= "light_color">#DEEAFD</color>
     <color name= "result_button_color">#2879fe</color>
 
+    <color name= "shimer_effect">#bfbdbd</color>
+
 </resources>
